@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>登录</title>
+
+<!--    <script type="text/javascript" src="js/jquery-1.7.2.js"></script>-->
+    <script>
+/*
+        $(function(){
+            $("a").click(function(){
+                //浏览器带有缓存功能,不会多次请求相同数据
+                $("img").attr("src","validcode?date="+new Date());
+                return false;
+            })
+        })
+
+ */
+        function refersh() {
+            debugger
+            document.getElementById("validCodeImg").src="validcode?date="+new Date();
+        }
+    </script>
+</head>
+<body>
+
+<p th:text=${error} style="color: red"></p>
+<form action="logindo" method="post">
+    用户名:<input type="text" name="username"/><br/>
+    密码:<input type="password" name="password"/><br/>
+    验证码:<input type="text" size="1" name="code"/><img id="validCodeImg" src="validcode" width="80" height="40"/><a href="javascript:refersh(this);">看不清</a><br/>
+    <input type="submit" value="登录"/><input type="reset" value="重置"/>
+
+</form>
+
+</body>
+</html>
